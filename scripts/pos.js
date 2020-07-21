@@ -34,6 +34,8 @@ const adjectives = taggedSentence.filter((pair) => {
   // probably no other adjective tags but would like to confirm
 });
 
+// do I see this on glitch?
+
 console.log("Nouns:");
 console.log(nouns.map((pair) => pair.token));
 console.log("Adjectives:");
