@@ -61,9 +61,12 @@ function App() {
     return <option>{c}</option>;
   });
 
-  const sentence = MajorArcana.fool.make(
+  const tarotSentencer = // hack--should probably name things more consistently
+    MajorArcana[card.split(" ")[1].toLowerCase()] || MajorArcana.fool;
+  const sentence = tarotSentencer.make(
     "Your future contains {{ adjective }} {{ nouns }}."
   );
+
   return (
     <div className="App">
       <header className="App-header">
