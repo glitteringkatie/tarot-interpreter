@@ -1,4 +1,5 @@
 const fs = require("fs");
+const _ = require("lodash");
 const natural = require("natural");
 
 const language = "EN";
@@ -14,11 +15,13 @@ const ruleSet = new natural.RuleSet(language);
 const tagger = new natural.BrillPOSTagger(lexicon, ruleSet);
 const tokenizer = new natural.TreebankWordTokenizer();
 
-const majorArcana = "./scripts/major-arcana/";
+const majorArcana = "major-arcana"; // would be the pass in
+const dir = `./scripts/${majorArcana}/`;
+console.log('import Sentencer from "sentencer";\n');
 
-fs.readdir(majorArcana, (err, fileNames) => {
+fs.readdir(dir, (_err, fileNames) => {
   fileNames.forEach((fileName) => {
-    fs.readFile(majorArcana + fileName, "utf8", (err, description) => {
+    fs.readFile(dir + fileName, "utf8", (_err, description) => {
       // console.log(description);
       const tokenizedDescription = tokenizer.tokenize(description);
 
@@ -39,10 +42,23 @@ fs.readdir(majorArcana, (err, fileNames) => {
         // probably no other adjective tags but would like to confirm
       });
 
-      console.log("Nouns:");
-      console.log(nouns.map((taggedWord) => taggedWord.token));
-      console.log("Adjectives:");
-      console.log(adjectives.map((taggedWord) => taggedWord.token));
+      const content = {
+        nounList: nouns.map((taggedWord) => taggedWord.token),
+        adjectiveList: adjectives.map((taggedWord) => taggedWord.token),
+      };
+
+      const cardName = _.startCase(fileName.split(".")[0]);
+      console.log(`const ${cardName}Sentencer = Sentencer.use(`);
+      console.log(content);
+      console.log(");");
     });
   });
+  //TODO
+  // append the following:
+  // const MajorArcana = {
+  //   fool: FoolSentencer,
+  //   magician: MagicianSentencer,
+  // };
+
+  // export default MajorArcana;
 });
