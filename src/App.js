@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import MajorArcana from "./lib/major-arcana";
@@ -17,48 +17,80 @@ function App() {
   );
 }
 
-class CardSelector extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      arcana: "-- major or minor? --",
-      card: "-- what value? --",
-    };
-    this.handleArcana = this.handleArcana.bind(this);
-    this.handleCard = this.handleCard.bind(this);
-  }
+function CardSelector() {
+  const [arcana, setArcana] = useState("-- major or minor? --");
+  const [card, setCard] = useState("-- what value? --");
+  // if major arcana, second select has major arcana
+  // if minor arcana, second select has 1-King
 
-  handleArcana(event) {
-    this.setState({ arcana: event.target.value });
-  }
+  const chooseArcana = (e) => {
+    setCard("-- what value? --");
+    setArcana(e.target.value);
+  };
 
-  handleCard(event) {
-    this.setState({ card: event.target.value });
-  }
+  const majorArcana = [
+    "The Fool",
+    "The Magician",
+    "The High Priestess",
+    "The Empress",
+    "The Emperor",
+    "The Hierophant",
+    "The Lovers",
+    "The Chariot",
+    "Strength",
+    "The Hermit",
+    "Wheel of Fortune",
+    "Justic",
+    "The Hanged Man",
+    "Death",
+    "Temperance",
+    "The Devil",
+    "The Tower",
+    "The Star",
+    "The Moon",
+    "The Sun",
+    "Judgement",
+    "The World",
+  ];
 
-  render() {
-    // if major arcana, second select has major arcana
-    // if minor arcana, second select has 1-King
+  const suits = [
+    "Ace",
+    "Two",
+    "Three",
+    "Four",
+    "Five",
+    "Six",
+    "Seven",
+    "Eight",
+    "Nine",
+    "Ten",
+    "Page",
+    "Knight",
+    "Queen",
+    "King",
+  ];
 
-    return (
-      <div className="card-selector">
-        What card did you draw?
-        <select value={this.state.arcana} onChange={this.handleArcana}>
-          <option disabled>-- major or minor? --</option>
-          <option>Major Arcana</option>
-          {/* <option>Swords</option>
-          <option>Cups</option>
-          <option>Wands</option>
-          <option>Pentacles</option> */}
-        </select>
-        <select value={this.state.card} onChange={this.handleCard}>
-          <option disabled>-- what value? --</option>
-          <option>The Fool</option>
-          <option>The Magician</option>
-        </select>
-      </div>
-    );
-  }
+  const cards = arcana === "Major Arcana" ? majorArcana : suits;
+  const cardOptions = cards.map((c) => {
+    return <option>{c}</option>;
+  });
+
+  return (
+    <div className="card-selector">
+      What card did you draw?
+      <select value={arcana} onChange={chooseArcana}>
+        <option disabled>-- major or minor? --</option>
+        <option>Major Arcana</option>
+        <option>Swords</option>
+        <option>Cups</option>
+        <option>Wands</option>
+        <option>Pentacles</option>
+      </select>
+      <select value={card} onChange={(e) => setCard(e.target.value)}>
+        {[<option disabled>-- what value? --</option>].concat(cardOptions)}
+      </select>
+    </div>
+  );
 }
 
 export default App;
