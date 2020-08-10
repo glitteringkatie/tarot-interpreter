@@ -4,20 +4,6 @@ import "./App.css";
 import MajorArcana from "./lib/major-arcana";
 
 function App() {
-  const sentence = MajorArcana.fool.make(
-    "Your future contains {{ adjective }} {{ nouns }}."
-  );
-  return (
-    <div className="App">
-      <header className="App-header">
-        <CardSelector></CardSelector>
-        <p>{sentence}</p>
-      </header>
-    </div>
-  );
-}
-
-function CardSelector() {
   const [arcana, setArcana] = useState("-- major or minor? --");
   const [card, setCard] = useState("-- what value? --");
   // if major arcana, second select has major arcana
@@ -75,20 +61,28 @@ function CardSelector() {
     return <option>{c}</option>;
   });
 
+  const sentence = MajorArcana.fool.make(
+    "Your future contains {{ adjective }} {{ nouns }}."
+  );
   return (
-    <div className="card-selector">
-      What card did you draw?
-      <select value={arcana} onChange={chooseArcana}>
-        <option disabled>-- major or minor? --</option>
-        <option>Major Arcana</option>
-        <option>Swords</option>
-        <option>Cups</option>
-        <option>Wands</option>
-        <option>Pentacles</option>
-      </select>
-      <select value={card} onChange={(e) => setCard(e.target.value)}>
-        {[<option disabled>-- what value? --</option>].concat(cardOptions)}
-      </select>
+    <div className="App">
+      <header className="App-header">
+        <div className="card-selector">
+          What card did you draw?
+          <select value={arcana} onChange={chooseArcana}>
+            <option disabled>-- major or minor? --</option>
+            <option>Major Arcana</option>
+            <option>Swords</option>
+            <option>Cups</option>
+            <option>Wands</option>
+            <option>Pentacles</option>
+          </select>
+          <select value={card} onChange={(e) => setCard(e.target.value)}>
+            {[<option disabled>-- what value? --</option>].concat(cardOptions)}
+          </select>
+        </div>
+        <p>{sentence}</p>
+      </header>
     </div>
   );
 }
