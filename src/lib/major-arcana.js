@@ -115,6 +115,7 @@ const FoolSentencer = Sentencer.use({
     "trusting",
   ],
 });
+
 const MagicianSentencer = Sentencer.use({
   nounList: [
     "master",
@@ -183,9 +184,6 @@ const MagicianSentencer = Sentencer.use({
   ],
 });
 
-const MajorArcana = {
-  fool: FoolSentencer,
-  magician: MagicianSentencer,
-};
+const MajorArcana = { fool: FoolSentencer, magician: MagicianSentencer };
 
 export default MajorArcana;
