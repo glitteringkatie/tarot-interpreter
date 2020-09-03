@@ -61,11 +61,8 @@ function App() {
     return <option key={idx}>{c}</option>;
   });
 
-  const tarotSentencer = // hack--should probably name things more consistently
+  const tarotSentence = // hack--should probably name things more consistently
     MajorArcana[card.split(" ")[1].toLowerCase()] || MajorArcana.fool;
-  const sentence = tarotSentencer.make(
-    "Your future contains {{ adjective }} {{ nouns }}."
-  );
 
   return (
     <div className="App">
@@ -88,7 +85,9 @@ function App() {
             ].concat(cardOptions)}
           </select>
         </div>
-        <p>{sentence}</p>
+        <p>
+          {tarotSentence("Your future contains {{ adjective }} {{ nouns }}.")}
+        </p>
       </header>
     </div>
   );

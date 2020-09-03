@@ -184,6 +184,9 @@ const MagicianSentencer = Sentencer.use({
   ],
 });
 
-const MajorArcana = { fool: FoolSentencer, magician: MagicianSentencer };
+const MajorArcana = {
+  fool: (template) => FoolSentencer.make(template),
+  magician: (template) => MagicianSentencer.make(template),
+};
 
 export default MajorArcana;

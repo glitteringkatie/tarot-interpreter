@@ -77,7 +77,7 @@ fsPromises.readdir(dir).then((files) => {
       const exportObject =
         "const MajorArcana = {" +
         promises.map(([cardName, _lists]) => {
-          return `${cardName.toLowerCase()}: ${cardName}Sentencer\n`;
+          return `${cardName.toLowerCase()}: (template) => ${cardName}Sentencer.make(template)\n`;
         }) +
         "};\n\n";
 
