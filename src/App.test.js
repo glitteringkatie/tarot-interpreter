@@ -21,7 +21,7 @@ test("fills in the cards for suits", () => {
 test("uses the given card predictions", () => {
   const adj = "spiritual";
   const noun = "master";
-  const magicianMock = jest.spyOn(MajorArcana, "fool");
+  const magicianMock = jest.spyOn(MajorArcana, "magician");
   magicianMock.mockImplementation((template) => {
     const mockSentencer = Sentencer.use({
       nounList: [noun],
@@ -33,7 +33,7 @@ test("uses the given card predictions", () => {
   const { getByDisplayValue, getByText } = render(<App />);
   chooseArcana(getByDisplayValue, "Major Arcana");
   const card = getByDisplayValue("-- what value? --");
-  fireEvent.change(card, { target: { value: "The Fool" } });
+  fireEvent.change(card, { target: { value: "The Magician" } });
 
   const prediction = getByText(`Your future contains ${adj} ${noun}s.`);
   expect(prediction).toMatchSnapshot;
