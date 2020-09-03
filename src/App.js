@@ -57,8 +57,8 @@ function App() {
   ];
 
   const cards = arcana === "Major Arcana" ? majorArcana : suits;
-  const cardOptions = cards.map((c) => {
-    return <option>{c}</option>;
+  const cardOptions = cards.map((c, idx) => {
+    return <option key={idx}>{c}</option>;
   });
 
   const tarotSentencer = // hack--should probably name things more consistently
@@ -81,7 +81,11 @@ function App() {
             <option>Pentacles</option>
           </select>
           <select value={card} onChange={(e) => setCard(e.target.value)}>
-            {[<option disabled>-- what value? --</option>].concat(cardOptions)}
+            {[
+              <option disabled key="default">
+                -- what value? --
+              </option>,
+            ].concat(cardOptions)}
           </select>
         </div>
         <p>{sentence}</p>

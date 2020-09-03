@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fills in the cards for Major Arcana 1`] = `
+<select>
+  <option
+    disabled=""
+  >
+    -- what value? --
+  </option>
+  <option>
+    The Fool
+  </option>
+  <option>
+    The Magician
+  </option>
+  <option>
+    The High Priestess
+  </option>
+  <option>
+    The Empress
+  </option>
+  <option>
+    The Emperor
+  </option>
+  <option>
+    The Hierophant
+  </option>
+  <option>
+    The Lovers
+  </option>
+  <option>
+    The Chariot
+  </option>
+  <option>
+    Strength
+  </option>
+  <option>
+    The Hermit
+  </option>
+  <option>
+    Wheel of Fortune
+  </option>
+  <option>
+    Justic
+  </option>
+  <option>
+    The Hanged Man
+  </option>
+  <option>
+    Death
+  </option>
+  <option>
+    Temperance
+  </option>
+  <option>
+    The Devil
+  </option>
+  <option>
+    The Tower
+  </option>
+  <option>
+    The Star
+  </option>
+  <option>
+    The Moon
+  </option>
+  <option>
+    The Sun
+  </option>
+  <option>
+    Judgement
+  </option>
+  <option>
+    The World
+  </option>
+</select>
+`;
+
+exports[`fills in the cards for suits 1`] = `
+<select>
+  <option
+    disabled=""
+  >
+    -- what value? --
+  </option>
+  <option>
+    Ace
+  </option>
+  <option>
+    Two
+  </option>
+  <option>
+    Three
+  </option>
+  <option>
+    Four
+  </option>
+  <option>
+    Five
+  </option>
+  <option>
+    Six
+  </option>
+  <option>
+    Seven
+  </option>
+  <option>
+    Eight
+  </option>
+  <option>
+    Nine
+  </option>
+  <option>
+    Ten
+  </option>
+  <option>
+    Page
+  </option>
+  <option>
+    Knight
+  </option>
+  <option>
+    Queen
+  </option>
+  <option>
+    King
+  </option>
+</select>
+`;
